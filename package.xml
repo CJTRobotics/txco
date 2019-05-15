@@ -1,19 +1,20 @@
 <?xml version="1.0"?>
 <package format="2">
   <name>txco</name>
-  <version>0.0.0</version>
-  <description>The txco package</description>
+  <version>0.0.1</version>
+  <description>The txco node package</description>
 
   <!-- One maintainer tag required, multiple allowed, one person per tag -->
   <!-- Example:  -->
   <!-- <maintainer email="jane.doe@example.com">Jane Doe</maintainer> -->
-  <maintainer email="cjtrobot@todo.todo">cjtrobot</maintainer>
+  <maintainer email="robinneubig1@gmail.com">Robin Neubig</maintainer>
+  <maintainer email="larsnusch05@gmail.com">Lars Ziegler</maintainer>
 
 
   <!-- One license tag required, multiple allowed, one license per tag -->
   <!-- Commonly used license strings: -->
   <!--   BSD, MIT, Boost Software License, GPLv2, GPLv3, LGPLv2.1, LGPLv3 -->
-  <license>TODO</license>
+  <license>LGPLv3</license>
 
 
   <!-- Url tags are optional, but multiple are allowed, one per tag -->
@@ -26,7 +27,9 @@
   <!-- Authors do not have to be maintainers, but could be -->
   <!-- Example: -->
   <!-- <author email="jane.doe@example.com">Jane Doe</author> -->
-
+  <author email="robinneubig1@gmail.com">Robin Neubig</author>
+  <author email="oskar.roesler@cjtrobotics.de">Oskar Roesler</author>
+  <author email="larsnusch05@gmail.com">Lars Ziegler</author>
 
   <!-- The *depend tags are used to specify dependencies -->
   <!-- Dependencies can be catkin packages or system dependencies -->
@@ -49,11 +52,8 @@
   <!-- Use doc_depend for packages you need only for building documentation: -->
   <!--   <doc_depend>doxygen</doc_depend> -->
   <buildtool_depend>catkin</buildtool_depend>
-  <build_depend>roscpp</build_depend>
   <build_depend>rospy</build_depend>
-  <build_export_depend>roscpp</build_export_depend>
   <build_export_depend>rospy</build_export_depend>
-  <exec_depend>roscpp</exec_depend>
   <exec_depend>rospy</exec_depend>
 
 
