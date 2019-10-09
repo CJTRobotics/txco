@@ -6,30 +6,34 @@ import time
 import serial
 
 
-def init():
-    rospy.init_node("txco_node", anonymous=False)
+class Node:
 
-def port():
-    return rospy.get_param('~port')
+    def __init__(self):
+        self.init = rospy.init_node("txco_node", anonymous=False)
+        self.port = rospy.get_param('~port')
+        self.baudrate = rospy.get_param('~baudrate')
+        self.ser = serial.Serial(self.port, self.baudrate, parity=serial.PARITY_NONE, stopbits=serial.STOPBITS_ONE, \
+                        bytesize=serial.EIGHTBITS)
 
-def baudrate():
-    return rospy.get_param('~baudrate')
+    def co2talker(self):
+        pub = rospy.Publisher("txco_publisher", Int16, queue_size=10)
+        rate = rospy.Rate(10) # 10hz
 
-def co2talker():
-    pub = rospy.Publisher("txco_publisher", Int16, queue_size=10)
-    rate = rospy.Rate(10) # 10hz
-    while not rospy.is_shutdown():
-        co2_val = int(ser.readline())
-        pub.publish(co2_val)
-        rate.sleep()
+        while not rospy.is_shutdown():
+            co2_val = int(self.ser.readline())
+            pub.publish(co2_val)
+            rate.sleep()
+
+    def main(self):
+        try:
+            self.init
+            time.sleep(1)
+            self.co2talker()
+        except rospy.ROSInterruptException:
+            self.ser.close()
+            pass
+
 
 if __name__ == "__main__":
-    try:
-        init()
-        ser = serial.Serial(port(), baudrate(), parity = serial.PARITY_NONE, stopbits = serial.STOPBITS_ONE, bytesize = serial.EIGHTBITS)
-        time.sleep(1)
-        co2talker()
-        
-    except rospy.ROSInterruptException:
-        ser.close()
-        pass
+    Node().main()
+
