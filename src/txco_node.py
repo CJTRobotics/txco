@@ -26,7 +26,6 @@ class Node:
 
     def main(self):
         try:
-            self.init
             time.sleep(1)
             self.co2talker()
         except rospy.ROSInterruptException:
